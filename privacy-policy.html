@@ -21,6 +21,12 @@
             border-left: 4px solid #FF9800;
             margin-bottom: 30px;
         }
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #FF9800;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
@@ -32,27 +38,55 @@
 
     <p>This privacy policy applies to the My Feelings Wheel app (hereby referred to as "Application") for mobile devices that was created by Kindcraft Apps (hereby referred to as "Service Provider") as a Free service. This service is intended for use "AS IS".</p>
 
-    <h2>Information Collection and Use</h2>
+    <div class="highlight">
+        <strong>Privacy First:</strong> The Service Provider does not collect, store, or have access to any of your personal data. All your feelings data stays on your device or in your personal Google Drive (if you choose to use the backup feature).
+    </div>
+
+    <h2>How Your Data is Stored</h2>
     
-    <h3>Local Data Storage</h3>
-    <p>The Application stores your feelings data locally on your device using encrypted storage. This data includes:</p>
+    <h3>Local Storage (Default)</h3>
+    <p>By default, all your data is stored locally on your device:</p>
     <ul>
         <li>Feelings you log with the wheel interface</li>
         <li>Comments and notes you add to feelings</li>
         <li>App settings and preferences</li>
         <li>Reminder settings</li>
     </ul>
-    <p><strong>This data is stored only on your device and is encrypted.</strong> The Service Provider does not have access to this data, and it is not transmitted to any servers operated by the Service Provider.</p>
+    <p><strong>This data is encrypted and stored only on your device.</strong> The Service Provider has no servers, no databases, and no access to your data.</p>
 
-    <h3>Google Drive Backup (Optional Feature)</h3>
-    <p>The Application offers an <strong>optional</strong> Google Drive backup feature. If you choose to use this feature:</p>
+    <h3>Google Drive Backup (Optional)</h3>
+    <p>The Application offers an <strong>optional</strong> Google Drive backup feature that you can choose to enable:</p>
     <ul>
-        <li>You must sign in with your Google account</li>
-        <li>The Application will back up your encrypted feelings data to your personal Google Drive account</li>
-        <li>Data is stored in a hidden "appDataFolder" that only this Application can access</li>
-        <li>The Service Provider does NOT have access to your Google Drive or your backed-up data</li>
-        <li>Backups are automatic after logging feelings or changing settings (if you're signed in)</li>
-        <li>You can restore your data from Google Drive when reinstalling the app or using a new device</li>
+        <li>You sign in with your own Google account</li>
+        <li>Your encrypted feelings data is backed up to <strong>your personal Google Drive</strong></li>
+        <li>Data is stored in a hidden "appDataFolder" in your Drive that only this Application can access</li>
+        <li>Backups happen automatically after logging feelings or changing settings (while signed in)</li>
+        <li>You can restore your data from your Google Drive when reinstalling the app or using a new device</li>
+    </ul>
+    
+    <p><strong>Important:</strong> The Service Provider does NOT have access to your Google Drive or your backed-up data. The data exists only in your personal Google account.</p>
+
+    <h2>What the Service Provider Does NOT Collect</h2>
+    <p>The Service Provider does NOT collect, store, transmit, or have access to:</p>
+    <ul>
+        <li>Your feelings data</li>
+        <li>Your personal information (name, email, phone number, address, etc.)</li>
+        <li>Your location data</li>
+        <li>Device identifiers for tracking</li>
+        <li>Usage analytics or statistics</li>
+        <li>Crash reports or diagnostic data</li>
+        <li>Any personally identifiable information</li>
+    </ul>
+
+    <h2>Google Services Integration</h2>
+    
+    <h3>Google Sign-In & Google Drive API</h3>
+    <p>When you use the optional backup feature:</p>
+    <ul>
+        <li>Google Sign-In allows you to authenticate with your Google account</li>
+        <li>Your email address is displayed in the app settings (stored only on your device)</li>
+        <li>The Application uses Google Drive API to read/write encrypted backup files to your personal Drive</li>
+        <li>You can revoke this access at any time through <a href="https://myaccount.google.com/permissions" target="_blank">Google Account permissions</a> or by signing out in the app</li>
     </ul>
 
     <h3>Google API Services User Data Policy Compliance</h3>
@@ -60,89 +94,85 @@
     
     <p><strong>Specifically:</strong></p>
     <ul>
-        <li>We only request the minimum Google Drive API scope necessary (appDataFolder)</li>
-        <li>Data is only used to provide backup and restore functionality</li>
-        <li>We do not use Google user data for advertising</li>
-        <li>We do not allow humans to read your data</li>
-        <li>We do not transfer your data to third parties (except as required by law)</li>
+        <li>The Application only requests the minimum Google Drive API scope necessary (appDataFolder access)</li>
+        <li>Google Drive access is only used to backup and restore your encrypted data to your own Drive</li>
+        <li>The Application does not use Google user data for serving ads</li>
+        <li>The Application does not share Google user data with third parties (except as required for backup functionality)</li>
+        <li>All data transferred through Google APIs is encrypted</li>
     </ul>
 
-    <h2>Information We Do NOT Collect</h2>
-    <p>The Application does NOT collect:</p>
-    <ul>
-        <li>Personal information (name, email, phone number, etc.) - except Google account email if you use Drive backup</li>
-        <li>Location data</li>
-        <li>Device identifiers for tracking</li>
-        <li>Usage analytics or statistics</li>
-        <li>Crash reports or diagnostic data</li>
-    </ul>
-
-    <h2>Third-Party Services</h2>
-    <p>The Application uses the following third-party services:</p>
-    
-    <h3>Google Sign-In & Google Drive API</h3>
-    <p>Used only for the optional backup feature. When you sign in:</p>
-    <ul>
-        <li>Google provides your email address to identify your account (displayed in app settings)</li>
-        <li>The Application can read/write data to your Google Drive appDataFolder</li>
-        <li>You can revoke this access at any time through your <a href="https://myaccount.google.com/permissions" target="_blank">Google Account permissions</a></li>
-    </ul>
     <p>Google's privacy policy: <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></p>
 
     <h2>Data Security</h2>
-    <p>The Service Provider is committed to protecting your data:</p>
+    <p>Your data is protected through:</p>
     <ul>
-        <li>All feelings data is encrypted using industry-standard AES encryption</li>
-        <li>Encryption keys are stored securely on your device</li>
-        <li>When backed up to Google Drive, data remains encrypted</li>
-        <li>No data is transmitted to the Service Provider's servers (because we don't have any)</li>
+        <li><strong>Encryption:</strong> All feelings data is encrypted using industry-standard AES encryption before storage</li>
+        <li><strong>Local encryption keys:</strong> Encryption keys are stored securely on your device using Android's secure storage</li>
+        <li><strong>End-to-end protection:</strong> When backed up to Google Drive, data remains encrypted</li>
+        <li><strong>No remote servers:</strong> The Service Provider operates no servers that could be compromised</li>
     </ul>
 
-    <h2>Your Rights and Control</h2>
-    <p>You have complete control over your data:</p>
+    <h2>Your Complete Control</h2>
+    <p>You have full ownership and control of your data:</p>
     <ul>
-        <li><strong>Export:</strong> Export your feelings data as CSV at any time from app settings</li>
-        <li><strong>Delete:</strong> Delete all feelings data from app settings</li>
+        <li><strong>View:</strong> Browse all your feelings in the journal section</li>
+        <li><strong>Export:</strong> Export all your feelings data as CSV file at any time</li>
+        <li><strong>Delete:</strong> Delete individual feelings or all data from app settings</li>
+        <li><strong>Backup:</strong> Choose whether to enable Google Drive backup</li>
+        <li><strong>Restore:</strong> Restore from Google Drive backup when needed</li>
+        <li><strong>Revoke access:</strong> Sign out of Google Drive at any time to stop automatic backups</li>
         <li><strong>Uninstall:</strong> Uninstalling the app removes all local data from your device</li>
-        <li><strong>Revoke Google Drive access:</strong> Sign out in app settings or revoke access through Google Account settings</li>
-        <li><strong>Delete Google Drive backup:</strong> Managed automatically when you revoke access or uninstall the app</li>
     </ul>
-
-    <h2>Location Information</h2>
-    <p>This Application does NOT collect, store, or use precise real-time location information from your mobile device.</p>
 
     <h2>Children's Privacy</h2>
-    <p>The Application does not knowingly collect personally identifiable information from children under the age of 13.</p>
+    <p>This Application is designed for personal use by individuals capable of providing informed consent. The Application does not target children and does not knowingly facilitate data collection from children under the age of 13.</p>
     
-    <p>The Service Provider does not knowingly collect personally identifiable information from children. The Service Provider encourages all children to never submit any personally identifiable information through the Application. Parents and legal guardians should monitor their children's Internet usage and help enforce this Policy by instructing their children never to provide personally identifiable information through the Application without permission.</p>
+    <p>Because all data is stored locally on the user's device (or in their personal Google Drive), the Service Provider has no way to determine the age of users and does not collect any personally identifiable information from users of any age.</p>
     
-    <p>If you have reason to believe that a child has provided personally identifiable information to the Service Provider through the Application, please contact the Service Provider at kindcraftapps@gmail.com so that necessary actions can be taken.</p>
-    
-    <p>You must be at least 16 years of age to consent to the processing of your personally identifiable information in your country (in some countries we may allow your parent or guardian to do so on your behalf).</p>
+    <p>Parents and legal guardians should monitor their children's app usage and Internet activity.</p>
 
-    <h2>Opt-Out Rights</h2>
-    <p>You can stop all use of the Application and delete all associated data by:</p>
+    <h2>Location Information</h2>
+    <p>This Application does NOT collect, request, store, or use location information from your mobile device.</p>
+
+    <h2>Third-Party Services</h2>
+    <p>The only third-party service integrated into this Application is:</p>
     <ul>
-        <li>Deleting your feelings data from within the app settings</li>
-        <li>Signing out of Google Drive (if you use backup)</li>
-        <li>Uninstalling the Application using standard uninstall processes on your mobile device</li>
+        <li><strong>Google Sign-In & Google Drive API:</strong> Used solely for the optional backup/restore feature</li>
     </ul>
+    <p>No other third-party analytics, advertising, or tracking services are used.</p>
+
+    <h2>Data Requests and Law Enforcement</h2>
+    <p>In the event of a legal request or court order for user data:</p>
+    <ul>
+        <li>The Service Provider cannot provide feelings data because it is not collected or stored by the Service Provider</li>
+        <li>All data is encrypted and stored on users' devices or in users' personal Google Drive accounts</li>
+        <li>The Service Provider has no servers, no databases, and no access to user data</li>
+        <li>The Service Provider cannot decrypt user data</li>
+    </ul>
+    <p>Any legal requests would need to be directed to the individual user or to Google (for data in the user's Google Drive account).</p>
 
     <h2>Changes to This Privacy Policy</h2>
-    <p>This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes by updating this page with the new Privacy Policy and updating the "Last updated" date above.</p>
+    <p>This Privacy Policy may be updated from time to time. The Service Provider will update this page with any changes and modify the "Last updated" date above.</p>
     
-    <p>You are advised to review this Privacy Policy periodically for any changes. Continued use of the Application after changes constitutes acceptance of those changes.</p>
+    <p>You are advised to review this Privacy Policy periodically. Continued use of the Application after changes are posted constitutes acceptance of those changes.</p>
 
     <h2>Your Consent</h2>
-    <p>By using the Application, you are consenting to the processing of your information as set forth in this Privacy Policy now and as amended by the Service Provider.</p>
+    <p>By using the Application, you acknowledge that:</p>
+    <ul>
+        <li>You understand your data is stored on your device and/or your personal Google Drive</li>
+        <li>The Service Provider does not collect or have access to your data</li>
+        <li>You are responsible for managing your own data backups</li>
+        <li>You agree to this Privacy Policy</li>
+    </ul>
 
-    <h2>Contact Us</h2>
-    <p>If you have any questions regarding privacy while using the Application, or have questions about our practices, please contact the Service Provider via email at:</p>
-    <p><strong>kindcraftapps@gmail.com</strong></p>
+    <h2>Contact Information</h2>
+    <p>If you have any questions about this Privacy Policy or the Application's privacy practices, please contact:</p>
+    <p><strong>Kindcraft Apps</strong><br>
+    Email: <a href="mailto:kindcraftapps@gmail.com">kindcraftapps@gmail.com</a></p>
 
     <hr style="margin-top: 40px; border: none; border-top: 1px solid #ddd;">
     <p style="font-size: 12px; color: #888;">
-        This privacy policy was initially generated by <a href="https://app-privacy-policy-generator.nisrulz.com/" target="_blank">App Privacy Policy Generator</a> and subsequently updated to reflect current app functionality.
+        Initial policy template generated by <a href="https://app-privacy-policy-generator.nisrulz.com/" target="_blank">App Privacy Policy Generator</a>, extensively modified to accurately reflect app functionality and privacy practices.
     </p>
 </body>
 </html>
