@@ -1,137 +1,1042 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="-uFXA_TCRmybl1GMYJ2PfYn7tb5VA746LUmHGf_GMtg" />
+    <meta name="description" content="My Feelings Wheel - A free emotional tracking app to help you understand and manage your emotions with privacy-first design.">
     <title>My Feelings Wheel - Emotional Tracking App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #FF9800;
+            --primary-hover: #F57C00;
+            --secondary-color: #667eea;
+            --text-dark: #2c3e50;
+            --text-light: #666;
+            --background-light: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --card-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.12);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            max-width: 900px;
+            color: var(--text-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-attachment: fixed;
+            transition: opacity 2s ease;
+        }
+
+        body::before {
+            background: linear-gradient(135deg, #f44336 0%, #2196f3 100%);
+            opacity: 1;
+        }
+
+        body::after {
+            background: linear-gradient(135deg, #2196f3 0%, #fbc02d 100%);
+            opacity: 0;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .nav-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
-        h1 { 
-            color: #FF9800; 
-            text-align: center;
-            margin-bottom: 10px;
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            animation: fadeIn 0.6s ease-out;
         }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: var(--border-radius);
+            padding: 0;
+            margin-bottom: 0rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-content {
+            position: relative;
+        }
+
+        h1 {
+            display: none;
+        }
+
         .tagline {
-            text-align: center;
-            color: #666;
-            font-size: 18px;
-            margin-bottom: 40px;
+            display: none;
         }
-        .cta {
+
+        /* Standalone Google Play Badge */
+        .standalone-cta {
             text-align: center;
-            margin: 40px 0;
+            margin: 1.5rem 0;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
-        .btn {
+
+        .standalone-cta a {
             display: inline-block;
-            background: #FF9800;
-            color: white;
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            transition: background 0.3s;
+            transition: var(--transition);
+            outline: none;
         }
-        .btn:hover {
-            background: #F57C00;
+
+        .standalone-cta a:focus {
+            outline: none;
         }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
+
+        .standalone-cta a:focus-visible {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 3px;
+            border-radius: 8px;
         }
-        .feature {
-            padding: 20px;
-            background: #f5f5f5;
-            border-radius: 5px;
-            border-left: 4px solid #FF9800;
+
+        .play-badge,
+        .paypal-badge {
+            height: 70px;
+            width: auto;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+            transition: all 0.3s ease;
         }
-        .feature h3 {
-            color: #FF9800;
-            margin-top: 0;
+
+        .standalone-cta a:hover .play-badge,
+        .standalone-cta a:hover .paypal-badge {
+            transform: scale(1.05);
+            filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3));
         }
-        footer {
+
+        /* Feature Graphic */
+        .feature-graphic {
+            animation: fadeIn 1s ease-out 0.3s both;
+            position: relative;
+        }
+
+        .feature-graphic img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--border-radius);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Features Grid */
+        .features-section {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: var(--border-radius);
+            padding: 2rem 2rem;
+            margin-top: 0rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .features-section h2 {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
+            color: var(--text-dark);
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .features-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 100%;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 8px 16px rgba(255, 152, 0, 0.3);
+        }
+
+        .feature-card:hover .feature-icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 24px rgba(255, 152, 0, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .feature-card h3 {
+            color: var(--text-dark);
+            margin-bottom: auto;
+            font-size: 1.3rem;
+            font-weight: 700;
+            transition: var(--transition);
+            padding-bottom: 1rem;
+        }
+
+        .feature-card:hover h3 {
+            color: var(--primary-color);
+        }
+
+        .learn-more-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+        }
+
+        .learn-more-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9) translateY(30px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.1);
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: #666;
+            line-height: 1;
         }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-icon-wrapper {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.4);
+        }
+
+        .modal-icon-wrapper .feature-icon {
+            font-size: 2.5rem;
+        }
+
+        .modal-badge {
+            display: none;
+        }
+
+        .modal-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .modal-content p {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
+        /* About Section */
+        /* Research Section */
+        .research-section {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .research-section h2 {
+            color: var(--text-dark);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .research-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .research-content p {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .research-highlight {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary-color);
+            margin: 1.5rem 0;
+        }
+
+        .research-highlight h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .research-highlight ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .research-highlight li {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .research-highlight li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .about-section {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            color: var(--text-dark);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .about-section p {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .privacy-highlight {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+            margin-top: 1rem;
+        }
+
+        .privacy-highlight h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: var(--border-radius);
+            padding: 0.5rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        footer p {
+            margin-bottom: 0.75rem;
+            color: var(--text-light);
+        }
+
+        footer strong {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+
         footer a {
-            color: #FF9800;
+            color: var(--primary-color);
             text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
         }
+
         footer a:hover {
+            color: var(--primary-hover);
             text-decoration: underline;
+        }
+
+        .footer-divider {
+            margin: 0 0.5rem;
+            color: var(--text-light);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 0;
+            }
+
+            .play-badge,
+            .paypal-badge {
+                height: 50px;
+            }
+
+            .standalone-cta {
+                gap: 1rem;
+            }
+
+            .features-section {
+                padding: 3rem 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .features-section,
+            .about-section,
+            footer {
+                padding: 2rem 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus styles for keyboard navigation */
+        a:focus,
+        button:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>My Feelings Wheel</h1>
-        <p class="tagline">Track, understand, and reflect on your emotions</p>
+    <!-- Navigation -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="media/logo.png" alt="My Feelings Wheel Logo" class="logo">
+                <span class="logo-text">My Feelings Wheel</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="privacy-policy.html">Privacy</a></li>
+                <li><a href="mailto:kindcraftapps@gmail.com">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <div class="cta">
-            <a href="https://play.google.com/store/apps/details?id=com.kindcraft_apps.my_feelings_wheel" class="btn" target="_blank">Download on Google Play</a>
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="feature-graphic">
+                    <img src="media/Feature Graphic/en-GB-Feature-Graphic.png" 
+                         alt="My Feelings Wheel app feature showcase" 
+                         loading="eager">
+                </div>
+
+                <h1>My Feelings Wheel</h1>
+                <p class="tagline">Track, understand, and reflect on your emotions</p>
+            </div>
+        </section>
+
+        <!-- Google Play Badge & PayPal Donation -->
+        <div class="standalone-cta">
+            <a href="https://play.google.com/store/apps/details?id=com.kindcraft_apps.my_feelings_wheel" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="Download My Feelings Wheel on Google Play">
+                <img src="media/google-play.png" 
+                     alt="Get it on Google Play" 
+                     class="play-badge">
+            </a>
+            <a href="https://www.paypal.com/donate?hosted_button_id=ZLBQRJ6HDDKGU" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="Donate via PayPal">
+                <img src="media/paypal-donate.png" 
+                     alt="Donate with PayPal" 
+                     class="paypal-badge">
+            </a>
         </div>
 
-        <div class="features">
-            <div class="feature">
-                <h3>🎯 Identify Your Feelings</h3>
-                <p>Use our interactive feelings wheel to pinpoint exactly how you're feeling from hundreds of emotion options.</p>
+        <!-- Features Section -->
+        <section class="features-section" id="features" aria-labelledby="features-heading">
+            <h2 id="features-heading">Powerful Features for Your Emotional Journey</h2>
+            <p class="features-subtitle">Everything you need to understand, track, and grow your emotional well-being</p>
+            
+            <div class="features-grid">
+                <div class="feature-card" data-feature="wheel">
+                    <div class="feature-icon-wrapper">
+                        <span class="feature-icon" aria-hidden="true">💭</span>
+                    </div>
+                    <h3>Interactive Feelings Wheel</h3>
+                    <button class="learn-more-btn" aria-label="Learn more about Interactive Feelings Wheel">Learn More</button>
+                </div>
+                
+                <div class="feature-card" data-feature="journal">
+                    <div class="feature-icon-wrapper">
+                        <span class="feature-icon" aria-hidden="true">📖</span>
+                    </div>
+                    <h3>Journal Your Journey</h3>
+                    <button class="learn-more-btn" aria-label="Learn more about Journal Your Journey">Learn More</button>
+                </div>
+                
+                <div class="feature-card" data-feature="insights">
+                    <div class="feature-icon-wrapper">
+                        <span class="feature-icon" aria-hidden="true">💡</span>
+                    </div>
+                    <h3>Visual Insights</h3>
+                    <button class="learn-more-btn" aria-label="Learn more about Visual Insights">Learn More</button>
+                </div>
+                
+                <div class="feature-card" data-feature="privacy">
+                    <div class="feature-icon-wrapper">
+                        <span class="feature-icon" aria-hidden="true">🛡️</span>
+                    </div>
+                    <h3>Your Privacy First</h3>
+                    <button class="learn-more-btn" aria-label="Learn more about Your Privacy First">Learn More</button>
+                </div>
+                
+                <div class="feature-card" data-feature="sync">
+                    <div class="feature-icon-wrapper">
+                        <span class="feature-icon" aria-hidden="true">☁️</span>
+                    </div>
+                    <h3>Seamless Sync</h3>
+                    <button class="learn-more-btn" aria-label="Learn more about Seamless Sync">Learn More</button>
+                </div>
+                
+                <div class="feature-card" data-feature="languages">
+                    <div class="feature-icon-wrapper">
+                        <span class="feature-icon" aria-hidden="true">🌐</span>
+                    </div>
+                    <h3>Multiple Languages</h3>
+                    <button class="learn-more-btn" aria-label="Learn more about Multiple Languages">Learn More</button>
+                </div>
             </div>
-            <div class="feature">
-                <h3>📝 Journal Your Thoughts</h3>
-                <p>Add notes and comments to track patterns and gain insights into your emotional well-being.</p>
-            </div>
-            <div class="feature">
-                <h3>📊 Track Your Progress</h3>
-                <p>View your emotional journey over time with insights and statistics about your feelings.</p>
-            </div>
-            <div class="feature">
-                <h3>🔒 Private & Secure</h3>
-                <p>All your data is encrypted and stored locally on your device. Optional Google Drive backup keeps your data safe.</p>
-            </div>
-            <div class="feature">
-                <h3>☁️ Google Drive Backup</h3>
-                <p>Automatically backup your feelings to your personal Google Drive and restore on any device.</p>
-            </div>
-            <div class="feature">
-                <h3>🌍 Multiple Languages</h3>
-                <p>Available in English, Spanish, French, German, Turkish, and more.</p>
-            </div>
-        </div>
+        </section>
 
-        <h2>About My Feelings Wheel</h2>
-        <p>My Feelings Wheel is a free emotional tracking app designed to help you better understand and manage your emotions. Whether you're working on mental health, practicing mindfulness, or simply want to be more in tune with your feelings, this app provides an intuitive and private way to log and reflect on your emotional state.</p>
+        <!-- Research Section -->
+        <section class="research-section" id="research" aria-labelledby="research-heading">
+            <h2 id="research-heading">Backed by Psychological Research</h2>
+            <div class="research-content">
+                <p>The feelings wheel is not just a helpful tool—it's grounded in decades of psychological research on emotional intelligence and well-being. Originally developed by psychologist Dr. Robert Plutchik in 1980, the emotion wheel has been refined and built on by countless researchers and therapists worldwide.</p>
+                
+                <div class="research-highlight">
+                    <h3>How the Feelings Wheel Helps You</h3>
+                    <ul>
+                        <li><strong>Expand Emotional Vocabulary:</strong> Research by Dr Lisa Feldman Barrett and others suggests that people who develop a richer emotional vocabulary tend to show better emotional awareness and regulation</li>
+                        <li><strong>Improve Self-Awareness:</strong> Research by Dr. Marc Brackett and the Yale Center for Emotional Intelligence suggests that identifying emotions accurately is linked to improved decision-making and healthier relationships</li>
+                        <li><strong>Reduce Emotional Distress:</strong> Research by Matthew D. Lieberman and others suggests that simply naming what you feel — a technique called affect labeling — can reduce the intensity of emotional distress</li>
+                        <li><strong>Enhance Emotional Intelligence:</strong> Dr Daniel Goleman’s work shows that emotional awareness forms the foundation of all emotional-intelligence skills</li>
+                    </ul>
+                </div>
 
-        <h2>Privacy First</h2>
-        <p>Your privacy is our top priority. We don't collect any of your personal data. Everything stays on your device, encrypted and secure. If you choose to use Google Drive backup, your data goes directly to your personal Google Drive - we never have access to it.</p>
+                <p>By regularly using the feelings wheel, you're not just tracking emotions—you're building crucial skills backed by science. Whether you're managing stress, improving relationships, or working with a therapist, this evidence-based tool provides a structured path to greater emotional clarity and well-being.</p>
+            </div>
+        </section>
 
-        <footer>
+        <!-- About Section -->
+        <section class="about-section" id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">About My Feelings Wheel</h2>
+            <p>My Feelings Wheel is a free emotional tracking app designed to help you better understand and manage your emotions. Whether you're working on mental health, practicing mindfulness, or simply want to be more in tune with your feelings, this app provides an intuitive and private way to log and reflect on your emotional state.</p>
+
+            <div class="privacy-highlight">
+                <h3>Privacy First</h3>
+                <p>Your privacy is our top priority. We don't collect any of your personal data. Everything stays on your device, encrypted and secure. If you choose to use Google Drive backup, your data goes directly to your personal Google Drive - we never have access to it.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer role="contentinfo">
             <p><strong>Kindcraft Apps</strong></p>
             <p>
-                <a href="privacy-policy.html">Privacy Policy</a> | 
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <span class="footer-divider">|</span>
                 <a href="mailto:kindcraftapps@gmail.com">Contact Us</a>
             </p>
             <p>&copy; 2025 Kindcraft Apps. All rights reserved.</p>
         </footer>
+    </main>
+
+    <!-- Feature Modal -->
+    <div class="modal-overlay" id="featureModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-icon-wrapper">
+                <span class="feature-icon" id="modalIcon" aria-hidden="true"></span>
+            </div>
+            <span class="modal-badge" id="modalBadge"></span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
     </div>
+
+    <script>
+        // Seamless gradient background that cycles through logo colors on scroll
+        const colors = [
+            ['#f44336', '#2196f3'],  // red to blue
+            ['#2196f3', '#fbc02d'],  // blue to yellow
+            ['#fbc02d', '#9c27b0'],  // yellow to purple
+            ['#9c27b0', '#ff9800'],  // purple to orange
+            ['#ff9800', '#4caf50'],  // orange to green
+            ['#4caf50', '#607d8b'],  // green to grey
+            ['#607d8b', '#f44336']   // grey to red (cycle back)
+        ];
+
+        let currentGradientIndex = 0;
+        let nextGradientIndex = 1;
+        let lastScrollPosition = 0;
+        let scrollThreshold = 300; // Change gradient every 300px of scroll
+        let isTransitioning = false;
+
+        function updateGradient() {
+            const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollDifference = Math.abs(scrollPosition - lastScrollPosition);
+
+            if (scrollDifference >= scrollThreshold && !isTransitioning) {
+                isTransitioning = true;
+                lastScrollPosition = scrollPosition;
+                
+                // Calculate next gradients
+                currentGradientIndex = nextGradientIndex;
+                nextGradientIndex = (nextGradientIndex + 1) % colors.length;
+                
+                const [currentColor1, currentColor2] = colors[currentGradientIndex];
+                const [nextColor1, nextColor2] = colors[nextGradientIndex];
+                
+                // Set the current gradient on ::before and next on ::after
+                const beforeStyle = `linear-gradient(135deg, ${currentColor1} 0%, ${currentColor2} 100%)`;
+                const afterStyle = `linear-gradient(135deg, ${nextColor1} 0%, ${nextColor2} 100%)`;
+                
+                // Update pseudo-elements via CSS custom properties
+                document.documentElement.style.setProperty('--gradient-before', beforeStyle);
+                document.documentElement.style.setProperty('--gradient-after', afterStyle);
+                
+                // Cross-fade by toggling opacity
+                const afterElement = window.getComputedStyle(document.body, '::after');
+                const currentOpacity = parseFloat(afterElement.opacity) || 0;
+                
+                if (currentOpacity === 0) {
+                    // Fade in ::after, fade out ::before
+                    document.body.style.setProperty('--before-opacity', '0');
+                    document.body.style.setProperty('--after-opacity', '1');
+                } else {
+                    // Fade in ::before, fade out ::after
+                    document.body.style.setProperty('--before-opacity', '1');
+                    document.body.style.setProperty('--after-opacity', '0');
+                }
+                
+                // Allow next transition after animation completes
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 2000);
+            }
+        }
+
+        // Throttle scroll events for better performance
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            if (!scrollTimeout) {
+                scrollTimeout = setTimeout(function() {
+                    updateGradient();
+                    scrollTimeout = null;
+                }, 100);
+            }
+        });
+
+        // Initialize gradients on page load
+        window.addEventListener('load', function() {
+            const timeBasedIndex = Math.floor(Date.now() / 10000) % colors.length;
+            currentGradientIndex = timeBasedIndex;
+            nextGradientIndex = (timeBasedIndex + 1) % colors.length;
+            
+            const [color1, color2] = colors[currentGradientIndex];
+            const [nextColor1, nextColor2] = colors[nextGradientIndex];
+            
+            document.body.style.setProperty('--before-opacity', '1');
+            document.body.style.setProperty('--after-opacity', '0');
+            
+            // Set initial gradients
+            const style = document.createElement('style');
+            style.textContent = `
+                body::before {
+                    background: linear-gradient(135deg, ${color1} 0%, ${color2} 100%);
+                    opacity: var(--before-opacity, 1);
+                }
+                body::after {
+                    background: linear-gradient(135deg, ${nextColor1} 0%, ${nextColor2} 100%);
+                    opacity: var(--after-opacity, 0);
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        // Feature modal functionality
+        const featureData = {
+            wheel: {
+                icon: '💭',
+                badge: 'Interactive',
+                title: 'Interactive Feelings Wheel',
+                description: 'Navigate your emotions with ease using our intuitive, colour-coded wheel. Tap to explore hundreds of emotions organised from basic to complex feelings. Build greater emotional vocabulary and self-awareness as you discover the nuances between similar emotions.'
+            },
+            journal: {
+                icon: '📖',
+                badge: 'Reflective',
+                title: 'Journal Your Journey',
+                description: 'Create rich, detailed entries with photos, text, and emotional context. Track patterns over time and gain insights into your emotional well-being. Your personal space for authentic self-expression and growth.'
+            },
+            insights: {
+                icon: '💡',
+                badge: 'Insightful',
+                title: 'Visual Insights',
+                description: 'Beautiful charts and statistics help you understand your emotional patterns. See trends, identify triggers, and celebrate your growth. Data-driven insights that illuminate your emotional landscape over days, weeks, and months.'
+            },
+            privacy: {
+                icon: '🛡️',
+                badge: 'Encrypted',
+                title: 'Your Privacy First',
+                description: 'All your data is encrypted and stored securely with industry-standard AES encryption. Optional biometric lock ensures your personal reflections stay private. We never share your information with third parties – your journey is yours alone.'
+            },
+            sync: {
+                icon: '☁️',
+                badge: 'Cloud Sync',
+                title: 'Seamless Sync',
+                description: 'Your journal follows you everywhere with secure cloud backup to your personal Google Drive. Never lose your progress, even if you switch devices. Access your emotional journey whenever and wherever you need it. (Feature currently in development)'
+            },
+            languages: {
+                icon: '🌐',
+                badge: 'Global',
+                title: 'Multiple Languages',
+                description: 'Express yourself in your native language with full support for English, Spanish, French, German, Turkish, and more. Emotional awareness knows no borders – choose the language that feels most authentic to you.'
+            }
+        };
+
+        const modal = document.getElementById('featureModal');
+        const modalIcon = document.getElementById('modalIcon');
+        const modalBadge = document.getElementById('modalBadge');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalClose = document.querySelector('.modal-close');
+
+        // Open modal when feature card is clicked
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Don't open if clicking the button directly (button will handle it)
+                if (e.target.classList.contains('learn-more-btn')) {
+                    e.stopPropagation();
+                }
+                
+                const featureType = card.dataset.feature;
+                const data = featureData[featureType];
+                
+                modalIcon.textContent = data.icon;
+                modalBadge.textContent = data.badge;
+                modalTitle.textContent = data.title;
+                modalDescription.textContent = data.description;
+                
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modal function
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close button
+        modalClose.addEventListener('click', closeModal);
+        
+        // Close when clicking outside modal content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
