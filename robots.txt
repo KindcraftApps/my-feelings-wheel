@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /blog/
-Disallow: /comments/
-Disallow: /about/
+Disallow:
+
+Sitemap: https://myfeelingswheel.com/sitemap.xml
