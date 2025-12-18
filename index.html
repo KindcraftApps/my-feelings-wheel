@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="jH1ZNkvFYglIREbVe6orXU8qmmtI36N05FqYRFE0rLI" />
-    <meta name="description" content="My Feelings Wheel - A free emotional tracking app to help you understand and manage your emotions with privacy-first design.">
+    <meta name="description" content="A privacy-first emotional tracking app to help you understand, name and reflect on your feelings. Simple, secure and free.">
     <title>My Feelings Wheel - Emotional Tracking App</title>
     <link rel="icon" type="image/x-icon" href="media/logo.ico">
     <link rel="icon" type="image/png" sizes="48x48" href="media/logo.png">
@@ -12,6 +12,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="canonical" href="https://myfeelingswheel.com/" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://myfeelingswheel.com/">
+    <meta property="og:title" content="My Feelings Wheel – Emotional Tracking App">
+    <meta property="og:site_name" content="My Feelings Wheel">
+    <meta property="og:description" content="A privacy-first emotional tracking app to help you understand, name and reflect on your feelings. Simple, secure and free.">
+    <meta property="og:image" content="https://myfeelingswheel.com/media/Feature%20Graphic/en-GB-Feature-Graphic.png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="500">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My Feelings Wheel – Emotional Tracking App">
+    <meta name="twitter:description" content="A privacy-first emotional tracking app to help you understand, name and reflect on your feelings. Simple, secure and free.">
+    <meta name="twitter:image" content="https://myfeelingswheel.com/media/Feature%20Graphic/en-GB-Feature-Graphic.png">
+
 
 <script type="application/ld+json">
 {
@@ -162,8 +178,16 @@
             position: relative;
         }
 
-        h1 {
-            display: none;
+        .visually-hidden {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
         }
 
         .tagline {
@@ -736,7 +760,7 @@
                          loading="eager">
                 </div>
 
-                <h1>My Feelings Wheel</h1>
+                <h1 class="visually-hidden">My Feelings Wheel</h1>
                 <p class="tagline">Track, understand, and reflect on your emotions</p>
             </div>
         </section>
