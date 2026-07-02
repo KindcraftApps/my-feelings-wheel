@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="jH1ZNkvFYglIREbVe6orXU8qmmtI36N05FqYRFE0rLI" />
+    <meta name="description" content="Privacy Policy for Your Next Thing - Learn how we protect your data with local encryption and optional Google Drive backup.">
+    <title>Privacy Policy - Your Next Thing</title>
+    <link rel="icon" type="image/x-icon" href="media/logo.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://myfeelingswheel.com/privacy-policy.html">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #FF9800;
+            --primary-hover: #F57C00;
+            --secondary-color: #667eea;
+            --text-dark: #2c3e50;
+            --text-light: #666;
+            --background-light: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --card-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.12);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-attachment: fixed;
+            transition: opacity 2s ease;
+        }
+
+        body::before {
+            background: linear-gradient(135deg, #f44336 0%, #2196f3 100%);
+            opacity: 1;
+        }
+
+        body::after {
+            background: linear-gradient(135deg, #2196f3 0%, #fbc02d 100%);
+            opacity: 0;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Content Card */
+        .content-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            color: var(--text-dark);
+            font-size: clamp(1.5rem, 3vw, 1.75rem);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: var(--text-dark);
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        a:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Highlight Boxes */
+        .last-updated {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+        }
+
+        .highlight p:last-child {
+            margin-bottom: 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #e9ecef;
+            margin: 2.5rem 0;
+        }
+
+        .footer-note {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            padding: 1.5rem;
+            background: var(--background-light);
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+        }
+
+        /* Back to Home Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+            margin-top: 2rem;
+        }
+
+        .back-link:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+            text-decoration: none;
+        }
+
+        .back-link:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 3px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.75rem;
+            color: var(--text-light);
+        }
+
+        footer strong {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        .footer-divider {
+            margin: 0 0.5rem;
+            color: var(--text-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .content-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .last-updated,
+            .highlight {
+                padding: 1.25rem;
+            }
+
+            ul, ol {
+                padding-left: 1.5rem;
+            }
+        }
+
+        /* Focus styles for keyboard navigation */
+        a:focus,
+        button:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="/" class="logo-container" style="text-decoration: none;">
+                <img src="media/logo.png" alt="Your Next Thing Logo" class="logo">
+                <span class="logo-text">Your Next Thing</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="mailto:kindcraftapps@gmail.com">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container">
+        <article class="content-card">
+            <h1>Privacy Policy for Your Next Thing</h1>
+            
+            <div class="last-updated">
+                <strong>Last updated: May 21, 2026</strong>
+            </div>
+
+            <p>This privacy policy applies to the Your Next Thing app (hereby referred to as "Application") for mobile devices that was created by Kindcraft Apps (hereby referred to as "Service Provider") as a Free service. This service is intended for use "AS IS".</p>
+
+<div class="highlight">
+    <p><strong>Privacy First:</strong> The Service Provider does not collect, store, or have access to your personal feelings data. All your logs and journals stay securely on your device or in your personal Google Drive. The only personal data processed is an optional email address if you explicitly choose to contact us for support.</p>
+</div>
+
+            <div class="highlight">
+                <p><strong>Google Integration:</strong> This app uses Google Sign-In and Google Drive API for optional backup functionality. No other Google data is accessed. The specific scope requested is <code>https://www.googleapis.com/auth/drive.appdata</code>, which is used only for storing encrypted backups in your personal Google Drive.</p>
+            </div>
+
+            <h2>How Your Data is Stored</h2>
+            
+            <h3>Local Storage (Default)</h3>
+            <p>By default, all your data is stored locally on your device:</p>
+            <ul>
+                <li>Feelings you log with the wheel interface</li>
+                <li>Comments and notes you add to feelings</li>
+                <li>App settings and preferences</li>
+                <li>Reminder settings</li>
+            </ul>
+            <p><strong>This data is encrypted and stored only on your device.</strong> The Service Provider has no servers, no databases, and no access to your data.</p>
+
+            <h3>Google Drive Backup (Optional)</h3>
+            <p>The Application offers an <strong>optional</strong> Google Drive backup feature that you can choose to enable:</p>
+            <ul>
+                <li>You sign in with your own Google account</li>
+                <li>Your encrypted feelings data is backed up to <strong>your personal Google Drive</strong></li>
+                <li>Data is stored in a hidden "appDataFolder" in your Drive that only this Application can access</li>
+                <li>Backups happen automatically after logging feelings or changing settings (while signed in)</li>
+                <li>You can restore your data from your Google Drive when reinstalling the app or using a new device</li>
+            </ul>
+            
+            <p><strong>Important:</strong> The Service Provider does NOT have access to your Google Drive or your backed-up data. The data exists only in your personal Google account.</p>
+<h2>In-App Contact Form &amp; Feedback</h2>
+<p>The Application includes an optional built-in contact form powered by Google Forms, allowing you to submit feedback, bug reports, or feature requests. Interaction with this form is entirely voluntary.</p>
+
+<h3>Data Collected via the Contact Form</h3>
+<ul>
+    <li><strong>Email Address (Optional &amp; Opt-In):</strong> You may choose to provide your email address if you require a direct reply to your inquiry.</li>
+    <li><strong>Device Information (Optional &amp; Opt-In):</strong> To help troubleshoot issues, you may choose to include non-identifiable technical data (specifically: Android OS version, SDK version, device model, app/device language settings, and timezone). This data cannot be used to identify you individually.</li>
+</ul>
+
+<h3>Data Retention and Storage Limitation</h3>
+<p>We believe in strict data minimisation. Form responses are handled as follows:</p>
+<ul>
+    <li><strong>Support Emails:</strong> If you provide an email address, it is used strictly to communicate with you regarding your request. Email addresses are manually deleted from our feedback records within 30 to 90 days after your inquiry has been completely resolved.</li>
+    <li><strong>Anonymous Technical Data:</strong> Once an associated email address is deleted (or if no email address was provided initially), the remaining technical device information becomes entirely anonymous. We may retain this anonymous, non-identifiable technical data indefinitely to analyse app performance and guide future development.</li>
+</ul>
+            <h2>What the Service Provider Does NOT Collect</h2>
+            <p>The Service Provider does NOT collect, store, transmit, or have access to:</p>
+            <ul>
+                <li>Your feelings data</li>
+                <li>Your personal information (name, email, phone number, address, etc.), <strong>unless you explicitly choose to provide your email address via the optional in-app contact form</strong>.</li>
+                <li>Your location data</li>
+                <li>Device identifiers for tracking</li>
+                <li>Usage analytics or statistics</li>
+                <li>Crash reports or diagnostic data</li>
+                <li>Any personally identifiable information</li>
+            </ul>
+
+            <h2>Google Services Integration</h2>
+            
+            <h3>Google Sign-In &amp; Google Drive API</h3>
+            <p>When you use the optional backup feature:</p>
+            <ul>
+                <li>Google Sign-In allows you to authenticate with your Google account</li>
+                <li>Your email address is displayed in the app settings (stored only on your device)</li>
+                <li>The Application uses Google Drive API to read/write encrypted backup files to your personal Drive</li>
+                <li><strong>Scope requested:</strong> <code>https://www.googleapis.com/auth/drive.appdata</code> (used only for encrypted backups in the hidden appDataFolder)</li>
+            </ul>
+
+            <h3>Revoking Google Access</h3>
+            <p>You can revoke the Application's access to your Google account at any time:</p>
+            <ol>
+                <li><strong>Through the app:</strong> Go to Settings → Sign out of Google Drive</li>
+                <li><strong>Through Google:</strong> Visit <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">Google Account permissions</a> and remove "Your Next Thing"</li>
+            </ol>
+            <p>Revoking access will stop automatic backups but will not delete your existing backups from your Google Drive.</p>
+
+            <h3>Google API Services User Data Policy Compliance</h3>
+            <p>Your Next Thing's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+            
+            <p><strong>Specifically:</strong></p>
+            <ul>
+                <li>The Application only requests the minimum Google Drive API scope necessary (appDataFolder access)</li>
+                <li>Google Drive access is only used to backup and restore your encrypted data to your own Drive</li>
+                <li>The Application does not use Google user data for serving ads</li>
+                <li>The Application does not share Google user data with third parties (except as required for backup functionality)</li>
+                <li>All data transferred through Google APIs is encrypted</li>
+            </ul>
+
+            <div class="highlight">
+                <p><strong>Google's Privacy Policy:</strong> For information on how Google handles your data, please review <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</p>
+            </div>
+
+            <h2>Data Security</h2>
+            <p>Your data is protected through:</p>
+            <ul>
+                <li><strong>Encryption:</strong> All feelings data is encrypted using industry-standard AES encryption before storage</li>
+                <li><strong>Local encryption keys:</strong> Encryption keys are stored securely on your device using Android's secure storage</li>
+                <li><strong>End-to-end protection:</strong> When backed up to Google Drive, data remains encrypted</li>
+                <li><strong>No remote servers:</strong> The Service Provider operates no servers that could be compromised</li>
+            </ul>
+
+            <h2>Your Complete Control</h2>
+            <p>You have full ownership and control of your data:</p>
+            <ul>
+                <li><strong>View:</strong> Browse all your feelings in the journal section</li>
+                <li><strong>Export:</strong> Export all your feelings data as CSV file at any time</li>
+                <li><strong>Delete:</strong> Delete individual feelings or all data from app settings</li>
+                <li><strong>Backup:</strong> Choose whether to enable Google Drive backup</li>
+                <li><strong>Restore:</strong> Restore from Google Drive backup when needed</li>
+                <li><strong>Revoke access:</strong> Sign out of Google Drive at any time to stop automatic backups</li>
+                <li><strong>Uninstall:</strong> Uninstalling the app removes all local data from your device</li>
+            </ul>
+
+            <h2>Children's Privacy</h2>
+            <p>This Application is designed for personal use by individuals capable of providing informed consent. The Application does not target children and does not knowingly facilitate data collection from children under the age of 13.</p>
+            
+            <p>Because all data is stored locally on the user's device (or in their personal Google Drive), the Service Provider has no way to determine the age of users and does not collect any personally identifiable information from users of any age.</p>
+            
+            <p>Parents and legal guardians should monitor their children's app usage and Internet activity.</p>
+
+            <h2>Location Information</h2>
+            <p>This Application does NOT collect, request, store, or use location information from your mobile device.</p>
+
+<h2>Third-Party Services</h2>
+<p>The third-party services integrated into this Application are:</p>
+<ul>
+    <li><strong>Google Sign-In &amp; Google Drive API:</strong> Used solely for the optional backup/restore feature.</li>
+    <li><strong>Google Forms:</strong> Used to securely transmit and hold your feedback data if you utilise the optional in-app contact form. Please review <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a> to see how they secure form transmissions.</li>
+</ul>
+            <p>No other third-party analytics, advertising, or tracking services are used.</p>
+
+            <h2>Data Requests and Law Enforcement</h2>
+            <p>In the event of a legal request or court order for user data:</p>
+<ul>
+    <li>The Service Provider cannot provide feelings data because it is never collected or stored centrally.</li>
+    <li>All feelings data is encrypted and stored locally on users' devices or in their personal Google Drive accounts.</li>
+    <li>The Service Provider operates no application servers or permanent user databases, and has zero access to your logs, journals, or emotional data.</li>
+    <li>The Service Provider cannot decrypt user data.</li>
+</ul>
+<p>Any legal requests regarding your app data would need to be directed to the individual user or to Google. Temporary contact form submissions are stored securely via Google Forms/Sheets, contain no feelings data, and are cleared regularly as outlined above.</p>
+            <p>Any legal requests would need to be directed to the individual user or to Google (for data in the user's Google Drive account).</p>
+
+            <h2>Changes to This Privacy Policy</h2>
+            <p>This Privacy Policy may be updated from time to time. The Service Provider will update this page with any changes and modify the "Last updated" date above.</p>
+            
+            <p>You are advised to review this Privacy Policy periodically. Continued use of the Application after changes are posted constitutes acceptance of those changes.</p>
+
+            <h2>Your Consent</h2>
+            <p>By using the Application, you acknowledge that:</p>
+            <ul>
+                <li>You understand your data is stored on your device and/or your personal Google Drive</li>
+                <li>The Service Provider does not collect or have access to your data</li>
+                <li>You are responsible for managing your own data backups</li>
+                <li>You agree to this Privacy Policy</li>
+            </ul>
+
+            <h2>Contact Information</h2>
+            <p>If you have any questions about this Privacy Policy or the Application's privacy practices, please contact:</p>
+            <p><strong>Kindcraft Apps</strong><br>
+            Email: <a href="mailto:kindcraftapps@gmail.com">kindcraftapps@gmail.com</a></p>
+
+            <hr>
+            
+            <div class="footer-note">
+                Initial policy template generated by <a href="https://app-privacy-policy-generator.nisrulz.com/" target="_blank" rel="noopener noreferrer">App Privacy Policy Generator</a>, extensively modified to accurately reflect app functionality and privacy practices.
+            </div>
+
+            <a href="/" class="back-link">← Back to Home</a>
+        </article>
+
+        <!-- Footer
+        <footer role="contentinfo">
+            <p><strong>Kindcraft Apps</strong></p>
+            <p>
+                <a href="/">Home</a>
+                <span class="footer-divider">|</span>
+                <a href="mailto:kindcraftapps@gmail.com">Contact Us</a>
+            </p>
+            <p>&copy; 2025 Kindcraft Apps. All rights reserved.</p>
+        </footer> -->
+    </main>
+</body>
+</html>
